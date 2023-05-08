@@ -25,7 +25,7 @@ echo "-----------------------"
 # Perform backup
 for database in ${databases}; do
     # Exclude system databases and excludes list
-    if [[ "${database}" != _* ]] && [[ "${database}" != "postgres" ]] && [ ! -n "${exclude_map[$database]}" ]; then
+    if [[ "${database}" != _* ]] && [[ "${database}" != "postgres" ]] && [[ "${database}" != "template0" ]] && [[ "${database}" != "template1" ]] && [ ! -n "${exclude_map[$database]}" ]; then
         echo "Dumping database: ${database}"
         PGPASSWORD="${PASSWORD}" pg_dump ${ARGS} --dbname="${database}" --host="${HOST}" --port="${PORT}" --username="${USERNAME}" > "/${FULL_DUMP_PATH}/${database}.sql"
         if [[ ${?} -ne 0 ]]; then

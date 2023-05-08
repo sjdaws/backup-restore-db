@@ -11,7 +11,7 @@ spec:
         - --postgres-restore
         env:
         - name: BACKUP_FILE
-          value: pg-server.postgres-all-20230508095049/test_db.sql
+          value: pg-server.postgres-all-20200101001200/test_db.sql
         - name: DB_NAME
           value: test_db
         - name: HOST

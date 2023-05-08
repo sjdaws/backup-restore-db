@@ -52,7 +52,7 @@ The jobs use environment variables to connect to the database.
 | `USERNAME` | Username used to connect to the host | |
 | `VERSION` | The major PostgreSQL version the host is running | 15 |
 
-<sup>* Backing up all databases will automatically exclude `postgres`, and any database starting with an underscore.</sup>
+<sup>* Backing up all databases will automatically exclude `postgres`, `template0`, `template1`, and any database starting with an underscore.</sup>
 
 #### PostgreSQL restore
 
