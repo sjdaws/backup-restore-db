@@ -1,0 +1,31 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: postgres-backup
+spec:
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - args:
+            - --postgres-backup
+            env:
+            - name: HOST
+              value: pg-server.postgres
+            - name: PASSWORD
+              value: password
+            image: sjdaws/backup-restore-db
+            imagePullPolicy: Always
+            name: backup
+            volumeMounts:
+            - mountPath: /backup
+              name: backup
+          restartPolicy: Never
+          volumes:
+          - hostPath:
+              path: /home/postgres-backups
+              type: Directory
+            name: backup
+  schedule: 0 0 * * *

@@ -1,0 +1,32 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgres-restore
+spec:
+  template:
+    spec:
+      containers:
+      - args:
+        - --postgres-restore
+        env:
+        - name: BACKUP_FILE
+          value: pg-server.postgres-all-20230508095049/test_db.sql
+        - name: DB_NAME
+          value: test_db
+        - name: HOST
+          value: pg-server.postgres
+        - name: PASSWORD
+          value: password
+        image: sjdaws/backup-restore-db
+        imagePullPolicy: Always
+        name: backup
+        volumeMounts:
+        - mountPath: /backup
+          name: backup
+      restartPolicy: Never
+      volumes:
+      - hostPath:
+          path: /home/postgres-backups
+          type: Directory
+        name: backup
