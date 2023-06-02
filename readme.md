@@ -32,7 +32,7 @@ The jobs use environment variables to connect to the database.
 | `ARGS` | Additional args to pass to `mysql` | |
 | `BACKUP_FILE` | Filename relative to the mounted `/backup` directory to restore | |
 | `DB_NAME` | The name of the database to restore | |
-| `DROP_FIRST` | Whether to drop the database before restoring | false |
+| `DROP_FIRST` | Whether to drop/create the database before restoring | false |
 | `HOST` | Hostname or IP for the MySQL host | localhost |
 | `PASSWORD` | Password used to connect to the host | |
 | `PORT` | Port the host is listening on | 3306 |
@@ -61,7 +61,7 @@ The jobs use environment variables to connect to the database.
 | `ARGS` | Additional args to pass to `psql` | |
 | `BACKUP_FILE` | Filename relative to the mounted `/backup` directory to restore | |
 | `DB_NAME` | The name of the database to restore | |
-| `DROP_FIRST` | Whether to drop the database before restoring | false |
+| `DROP_FIRST` | Whether to drop/create the database before restoring | false |
 | `HOST` | Hostname or IP for the PostgreSQL host | localhost |
 | `PASSWORD` | Password used to connect to the host | |
 | `PORT` | Port the host is listening on | 5432 |

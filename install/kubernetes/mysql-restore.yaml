@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - args:
-        - --postgres-restore
+        - --mysql-restore
         env:
         - name: BACKUP_FILE
           value: mysql-server.mysql-3306-all-20200101001200/test_db.sql
