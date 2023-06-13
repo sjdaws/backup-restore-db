@@ -17,6 +17,9 @@ if [ ! -z "${DB_NAMES}" ]; then
     databases=${DB_NAMES//,/ }
 else
     databases=`PGPASSWORD="${PASSWORD}" psql --host="${HOST}" --port="${PORT}" --username="${USERNAME}" -c "SELECT datname FROM pg_database;" | grep "^\s" | grep -v "^\s*datname\s*$" | tr -d " "`
+    if [[ ${?} -ne 0 ]]; then
+        EXIT_CODE=1
+    fi
 fi
 
 echo -e "\nDatabase backup"

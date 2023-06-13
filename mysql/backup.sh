@@ -22,6 +22,9 @@ if [ ! -z "${DB_NAMES}" ]; then
     databases=${DB_NAMES//,/ }
 else
     databases=`mysql --defaults-extra-file="${PASSWORD_PATH}/.my.cnf" --host="${HOST}" --port="${PORT}" --user="${USERNAME}" -e "SHOW DATABASES;" | tr -d "| " | grep -v "^Database$"`
+    if [[ ${?} -ne 0 ]]; then
+        EXIT_CODE=1
+    fi
 fi
 
 echo -e "\nDatabase backup"
