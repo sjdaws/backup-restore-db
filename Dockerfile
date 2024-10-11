@@ -1,6 +1,6 @@
-FROM alpine
+FROM cgr.dev/chainguard/wolfi-base
 
-RUN apk add --update bash mysql-client postgresql15-client && \
+RUN apk add --update bash mysql-client postgresql-17-client && \
   rm -rf /var/cache/apk/*
 
 COPY --chmod=755 generic /app/generic
