@@ -7,8 +7,9 @@ if [[ "${VERSION}" =~ ${NUMERIC} ]] && [[ ${VERSION} -gt 0 ]] && [[ ${VERSION} -
     echo -e "\nInstalling version ${VERSION} of pg_dump"
     echo "-----------------------"
 
-    apk del "postgresql-${INSTALLED_VERSION}-client"
-    apk add --update "postgresql-${VERSION}-client"
+    apt-get remove -y postgresql-client-${INSTALLED_VERSION}
+    apt autoremove -y
+    apt-get install -y postgresql-client-${VERSION}
     if [[ ${?} -ne 0 ]]; then
         EXIT_CODE=1
     fi
