@@ -13,7 +13,7 @@ RUN set -eux; \
 
 # Install clients
 RUN set -eux; \
-  /usr/bin/apt-get install -y mysql-client-8.0 postgresql-client-17
+  /usr/bin/apt-get install -y mysql-client-8.0 postgresql-client-18
 
 # Copy scripts
 COPY --chmod=755 generic /app/generic
